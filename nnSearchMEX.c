@@ -32,7 +32,7 @@
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
 	int i, j, n = mxGetN(prhs[0]), m = mxGetM(prhs[0]), idx = -1;
-    double *data = mxGetPr(prhs[0]), *query = mxGetPr(prhs[1]), *output, *output_idx;
+	double *data = mxGetPr(prhs[0]), *query = mxGetPr(prhs[1]), *output, *output_idx;
 	double min = DBL_MAX, now;
 
 	/*find nearest neighbor by brute force*/
@@ -48,13 +48,13 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 	}
 	
 	/*create output*/
-    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    plhs[1] = mxCreateDoubleMatrix(1, n, mxREAL);
-    output_idx = mxGetPr(plhs[0]);
-    output = mxGetPr(plhs[1]);
+	plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+	plhs[1] = mxCreateDoubleMatrix(1, n, mxREAL);
+	output_idx = mxGetPr(plhs[0]);
+	output = mxGetPr(plhs[1]);
 	for(i = 0;i < n;i++){
 		output[i] = data[idx + i * m];
 	}
-    /*MATLAB index is starting from 1*/
-    *output_idx = idx + 1;
+	/*MATLAB index is starting from 1*/
+	*output_idx = idx + 1;
 }
