@@ -19,13 +19,12 @@
  * Sample usage:
  * >> data = rand(10000,5);
  * >> query = rand(1,5);
- * >> [idx nearestNeighbor] = nnSearchMEX(data,x);
- * >> tic;[idx nearestNeighbor] = nnSearchMEX(data,x);toc;
+ * >> tic;[idx nearestNeighbor] = nnSearchMEX(data,query);toc;
  * Elapsed time is 0.000446 seconds.
- * >> tic;idx = knnsearch(data,x);toc;
+ * >> tic;idx = knnsearch(data,query);toc;
  * Elapsed time is 0.031132 seconds.
  *
- * Testing were run on Windows XP with Core2Duo E6550 CPU and 2G RAM
+ * Testing were run on Windows XP with Intel Core2Duo E6550 CPU and 2G RAM
  *
  */
 
