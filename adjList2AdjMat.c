@@ -3,14 +3,14 @@
 
 /**
  * Author: lintseju
- * Date: 2014/03/08
+ * Date: 2014/03/26
  *
  * Convert adjacent list to adjacent matrix
  *
  * Input: a m by n matrix L stores edges information in adjacent list, and a scalar opt indicate the processing cases.
  * L(i,j) is the jth neighbor node of node i, if L(i,j) == -1, then igore this entry.
- * opt = 0 or no opt: directed graph
- * opt = 1: undirected graph
+ * opt = 0 or no opt: directed graph, and set M(i,i) = 0 for all i
+ * opt = 1: undirected graph, and set M(i,i) = 0 for all i
  * opt = 2: directed graph, and set M(i,i) = 1 for all i
  * opt = 3: undirected graph, and set M(i,i) = 1 for all i
  *
@@ -65,10 +65,14 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         }
     }
     
-    /*Set M(i,i) = 1*/
+    /*Set M(i,i)*/
     if(opt >= 2){
         for(i = 0;i < m;i++){
             matrix[i + i * m] = 1;
+        }
+    }else{
+        for(i = 0;i < m;i++){
+            matrix[i + i * m] = 0;
         }
     }
     
